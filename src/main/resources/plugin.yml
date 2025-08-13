@@ -1,0 +1,4 @@
+name: Cruel and Unusual Punishments
+version: '1.0'
+main: com.gorgonine.cruelAndUnusualPunishments.CruelAndUnusualPunishments
+api-version: '1.21'
