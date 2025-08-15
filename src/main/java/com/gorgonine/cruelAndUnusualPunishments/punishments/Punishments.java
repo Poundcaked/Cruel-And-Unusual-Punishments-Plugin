@@ -1,5 +1,6 @@
 package com.gorgonine.cruelAndUnusualPunishments.punishments;
 
+import com.gorgonine.cruelAndUnusualPunishments.punishments.punishments.ThirtyEffectsPunishment;
 import com.gorgonine.cruelAndUnusualPunishments.punishments.punishments.WaterTankPunishment;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ public class Punishments {
 
     public static void addPunishments(){
         addPunishment(new WaterTankPunishment());
+        addPunishment(new ThirtyEffectsPunishment());
     }
 
     public static ArrayList<Punishment> getPunishments(){

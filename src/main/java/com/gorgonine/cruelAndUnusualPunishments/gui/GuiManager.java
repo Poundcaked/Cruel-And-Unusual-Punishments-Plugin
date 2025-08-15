@@ -75,7 +75,7 @@ public class GuiManager {
                     event.getWhoClicked().closeInventory();
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "punish " + chosen.getName() + " " + player.getPlayer().getName());
 
-                    event.getWhoClicked().sendMessage(ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Punished "+chosen.getName()+" with "+player.getName());
+                    event.getWhoClicked().sendMessage(ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Punished "+player.getName()+" with "+chosen.getName());
                 }
             }));
             playerListGui.update();
