@@ -1,4 +1,10 @@
-name: Cruel and Unusual Punishments
+name: CruelAndUnusualPunishments
 version: '1.0'
 main: com.gorgonine.cruelAndUnusualPunishments.CruelAndUnusualPunishments
-api-version: '1.21'
+api-version: '1.21.8'
+commands:
+  punish:
+    description: "Break the 8th Amendment of the United States on someone. Use with no arguments to open menu"
+    usage: "/punish [punishment] [player]"
+    permission: cruelandunusualpunishments.command.punish
+    permission-message: "You can't break the Constitution, pal!"
