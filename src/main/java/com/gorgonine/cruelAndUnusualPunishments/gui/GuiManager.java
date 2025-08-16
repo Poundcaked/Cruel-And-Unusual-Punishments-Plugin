@@ -39,8 +39,6 @@ public class GuiManager {
         punishmentPages.addPage(punishmentPane);
         playerListPages.addPage(playerPane);
 
-        System.out.println(Bukkit.getOnlinePlayers().size());
-
         for(Punishment p : Punishments.getPunishments()){
             ItemStack punishment = new ItemStack(p.getItemStack());
             ItemMeta punishmentItemMeta = punishment.getItemMeta();

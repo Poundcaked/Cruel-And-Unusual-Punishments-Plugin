@@ -1,5 +1,6 @@
 package com.gorgonine.cruelAndUnusualPunishments.punishments;
 
+import com.gorgonine.cruelAndUnusualPunishments.punishments.punishments.PopQuizPunishment;
 import com.gorgonine.cruelAndUnusualPunishments.punishments.punishments.ThirtyEffectsPunishment;
 import com.gorgonine.cruelAndUnusualPunishments.punishments.punishments.WaterTankPunishment;
 
@@ -11,6 +12,7 @@ public class Punishments {
     public static void addPunishments(){
         addPunishment(new WaterTankPunishment());
         addPunishment(new ThirtyEffectsPunishment());
+        addPunishment(new PopQuizPunishment());
     }
 
     public static ArrayList<Punishment> getPunishments(){
