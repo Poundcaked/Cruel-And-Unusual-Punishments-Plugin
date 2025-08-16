@@ -87,13 +87,16 @@ public class PopQuizPunishment extends Punishment {
 
 
         ChestGui gui = new ChestGui(1,"Pop Quiz!");
-        OutlinePane pane = new OutlinePane(0, 0, 9, 1, Pane.Priority.HIGH);
+        StaticPane pane = new StaticPane(0, 0, 9, 1, Pane.Priority.HIGH);
         gui.addPane(pane);
+
+        boolean[] answerPromptedCloseRequest = {false};
 
         gui.setOnGlobalClick(event -> event.setCancelled(true)); // cancel all clicks
         gui.setOnClose(event -> {
-            // Re-open instantly if they try to close
-            Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin(PLUGIN_ID), () -> gui.show(victim), 1);
+            if(!answerPromptedCloseRequest[0]){
+                Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin(PLUGIN_ID), () -> gui.show(victim), 1);
+            }
         });
 
         ArrayList<String> availableAnswers = new ArrayList<String>();
@@ -115,7 +118,7 @@ public class PopQuizPunishment extends Punishment {
         ItemMeta questionItemMeta = question.getItemMeta();
         questionItemMeta.setDisplayName("QUESTION: "+q);
         question.setItemMeta(questionItemMeta);
-        pane.addItem(new GuiItem(question));
+        pane.addItem(new GuiItem(question),0,0);
 
         for (int i = 0; i < 4; i++) {
             int chosenIndex = random.nextInt(availableAnswers.size());
@@ -128,7 +131,8 @@ public class PopQuizPunishment extends Punishment {
             answer.setItemMeta(answerItemMeta);
 
             String finalA = a;
-            pane.insertItem(new GuiItem(answer, event -> {
+            pane.addItem(new GuiItem(answer, event -> {
+                answerPromptedCloseRequest[0] = true;
                 if(chosenAnswer.equals(finalA)){
                     victim.closeInventory();
                     victim.playSound(victim, Sound.BLOCK_NOTE_BLOCK_BELL,1.0F,1.0F);
@@ -137,10 +141,8 @@ public class PopQuizPunishment extends Punishment {
                     victim.playSound(victim, Sound.ENTITY_HORSE_DEATH,1.0F,1.0F);
                     victim.setHealth(0);
                     victim.sendMessage(ChatColor.RED.toString() + ChatColor.BOLD.toString() + "WRONG! Correct Answer was " + finalA);
-
-
                 }
-            }),i+3);
+            }),i+3,0);
         }
         gui.update();
         gui.show(victim);

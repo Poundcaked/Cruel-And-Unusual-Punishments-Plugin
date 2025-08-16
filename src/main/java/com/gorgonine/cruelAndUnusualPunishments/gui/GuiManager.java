@@ -71,8 +71,9 @@ public class GuiManager {
                 Punishment chosen = chosenPunishments.get(event.getWhoClicked().getUniqueId());
                 if(chosen != null){
                     event.getWhoClicked().closeInventory();
-                    Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "punish " + chosen.getName() + " " + player.getPlayer().getName());
+//                    Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "punish " + chosen.getName() + " " + player.getPlayer().getName());
 
+                    chosen.execute((Player) event.getWhoClicked(),player);
                     event.getWhoClicked().sendMessage(ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Punished "+player.getName()+" with "+chosen.getName());
                 }
             }));
