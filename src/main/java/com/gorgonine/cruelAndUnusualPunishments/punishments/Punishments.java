@@ -1,9 +1,6 @@
 package com.gorgonine.cruelAndUnusualPunishments.punishments;
 
-import com.gorgonine.cruelAndUnusualPunishments.punishments.punishments.FillInventoryPunishment;
-import com.gorgonine.cruelAndUnusualPunishments.punishments.punishments.PopQuizPunishment;
-import com.gorgonine.cruelAndUnusualPunishments.punishments.punishments.ThirtyEffectsPunishment;
-import com.gorgonine.cruelAndUnusualPunishments.punishments.punishments.WaterTankPunishment;
+import com.gorgonine.cruelAndUnusualPunishments.punishments.punishments.*;
 
 import java.util.ArrayList;
 
@@ -15,6 +12,8 @@ public class Punishments {
         addPunishment(new ThirtyEffectsPunishment());
         addPunishment(new PopQuizPunishment());
         addPunishment(new FillInventoryPunishment());
+        addPunishment(new RotateRandomlyPunishment());
+        addPunishment(new FakeDiamondPunishment());
     }
 
     public static ArrayList<Punishment> getPunishments(){

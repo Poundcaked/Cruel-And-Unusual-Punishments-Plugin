@@ -1,6 +1,7 @@
 package com.gorgonine.cruelAndUnusualPunishments.punishments.punishments;
 
 import com.gorgonine.cruelAndUnusualPunishments.punishments.Punishment;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -20,8 +21,10 @@ public class WaterTankPunishment extends Punishment {
         Location playerLoc = player.getLocation();
 
         player.teleport(playerLoc.getBlock().getLocation());
-        PotionEffect potionEffect = PotionEffectType.MINING_FATIGUE.createEffect(-1,5);
-        player.addPotionEffect(potionEffect);
+        if(player.getGameMode() != GameMode.CREATIVE){
+            PotionEffect potionEffect = PotionEffectType.MINING_FATIGUE.createEffect(-1,5);
+            player.addPotionEffect(potionEffect);
+        }
 
         for (int x = -1; x < 2; x++) {
             for (int z = -1; z < 2; z++) {
