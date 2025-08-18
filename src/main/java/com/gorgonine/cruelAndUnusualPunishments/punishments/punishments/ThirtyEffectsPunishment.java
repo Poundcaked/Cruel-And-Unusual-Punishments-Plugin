@@ -14,7 +14,7 @@ import static com.gorgonine.cruelAndUnusualPunishments.CruelAndUnusualPunishment
 
 public class ThirtyEffectsPunishment extends Punishment {
     public ThirtyEffectsPunishment() {
-        super("ThirtyEffectsPunishment", ItemStack.of(Material.POTION));
+        super("ThirtyEffectsPunishment", ItemStack.of(Material.POTION), "Gives the victim 30 random effects");
     }
 
     @Override
@@ -24,7 +24,7 @@ public class ThirtyEffectsPunishment extends Punishment {
         for (int i = 0; i < 30; i++) {
             PotionEffect potionEffect = PotionEffectType.getById(random.nextInt(1,39+1)).createEffect(20*20,0);
 
-            Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin(PLUGIN_ID), () -> victim.addPotionEffect(potionEffect), 2);
+            Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin(PLUGIN_ID), () -> victim.addPotionEffect(potionEffect), 3*i);
         }
     }
 }

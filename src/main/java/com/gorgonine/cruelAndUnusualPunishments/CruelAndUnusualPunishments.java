@@ -3,6 +3,7 @@ package com.gorgonine.cruelAndUnusualPunishments;
 import com.gorgonine.cruelAndUnusualPunishments.commands.GuiCommand;
 import com.gorgonine.cruelAndUnusualPunishments.gui.GuiManager;
 import com.gorgonine.cruelAndUnusualPunishments.punishments.Punishments;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

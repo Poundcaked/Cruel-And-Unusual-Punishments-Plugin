@@ -1,8 +1,11 @@
 package com.gorgonine.cruelAndUnusualPunishments.punishments;
 
 import com.gorgonine.cruelAndUnusualPunishments.punishments.punishments.*;
+import org.bukkit.Bukkit;
 
 import java.util.ArrayList;
+
+import static com.gorgonine.cruelAndUnusualPunishments.CruelAndUnusualPunishments.PLUGIN_ID;
 
 public class Punishments {
     private static ArrayList<Punishment> punishments = new ArrayList<Punishment>();
@@ -13,7 +16,15 @@ public class Punishments {
         addPunishment(new PopQuizPunishment());
         addPunishment(new FillInventoryPunishment());
         addPunishment(new RotateRandomlyPunishment());
-        addPunishment(new FakeDiamondPunishment());
+
+        FakeDiamondPunishment fakeDiamondPunishment = new FakeDiamondPunishment();
+        addPunishment(fakeDiamondPunishment);
+        Bukkit.getPluginManager().registerEvents(fakeDiamondPunishment, Bukkit.getPluginManager().getPlugin(PLUGIN_ID));
+
+        addPunishment(new FlingPunishment());
+        addPunishment(new BunnyHopPunishment());
+        addPunishment(new MilesMoralesPunishment());
+        addPunishment(new ChunkDeletionPunishment());
     }
 
     public static ArrayList<Punishment> getPunishments(){

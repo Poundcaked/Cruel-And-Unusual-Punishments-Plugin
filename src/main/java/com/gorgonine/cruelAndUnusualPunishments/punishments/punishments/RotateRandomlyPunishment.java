@@ -12,7 +12,7 @@ import static com.gorgonine.cruelAndUnusualPunishments.CruelAndUnusualPunishment
 
 public class RotateRandomlyPunishment extends Punishment {
     public RotateRandomlyPunishment() {
-        super("RotateRandomlyPunishment", new ItemStack(Material.COMPASS));
+        super("RotateRandomlyPunishment", new ItemStack(Material.COMPASS),"Forces the victim to rotate in a bunch of random directions");
     }
 
     @Override

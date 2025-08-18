@@ -34,7 +34,7 @@ import static com.gorgonine.cruelAndUnusualPunishments.CruelAndUnusualPunishment
 
 public class PopQuizPunishment extends Punishment {
     public PopQuizPunishment() {
-        super("PopQuizPunishment", new ItemStack(Material.PLAYER_HEAD) {{ SkullMeta m = (SkullMeta) getItemMeta(); m.setPlayerProfile(Bukkit.createProfile(UUID.randomUUID(), null)); PlayerProfile p = m.getPlayerProfile(); p.setProperties(Collections.singleton(new ProfileProperty("textures", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjcwNWZkOTRhMGM0MzE5MjdmYjRlNjM5YjBmY2ZiNDk3MTdlNDEyMjg1YTAyYjQzOWUwMTEyZGEyMmIyZTJlYyJ9fX0="))); m.setPlayerProfile(p); setItemMeta(m); }});
+        super("PopQuizPunishment", new ItemStack(Material.PLAYER_HEAD) {{ SkullMeta m = (SkullMeta) getItemMeta(); m.setPlayerProfile(Bukkit.createProfile(UUID.randomUUID(), null)); PlayerProfile p = m.getPlayerProfile(); p.setProperties(Collections.singleton(new ProfileProperty("textures", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjcwNWZkOTRhMGM0MzE5MjdmYjRlNjM5YjBmY2ZiNDk3MTdlNDEyMjg1YTAyYjQzOWUwMTEyZGEyMmIyZTJlYyJ9fX0="))); m.setPlayerProfile(p); setItemMeta(m); }},"Force the victim to answer some trivia");
     }
 
     private static String readAll(Reader rd) {
@@ -146,6 +146,7 @@ public class PopQuizPunishment extends Punishment {
         }
         gui.update();
         gui.show(victim);
+        victim.playSound(victim,Sound.BLOCK_NOTE_BLOCK_PLING,1.0F,1.0F);
 
     }
 }

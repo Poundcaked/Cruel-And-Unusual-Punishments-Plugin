@@ -14,7 +14,7 @@ import static com.gorgonine.cruelAndUnusualPunishments.CruelAndUnusualPunishment
 
 public class FillInventoryPunishment extends Punishment {
     public FillInventoryPunishment() {
-        super("FillInventoryPunishment", new ItemStack(Material.INK_SAC));
+        super("FillInventoryPunishment", new ItemStack(Material.INK_SAC),"Fill the victim's inventory with a junk of your choice");
     }
 
     @Override

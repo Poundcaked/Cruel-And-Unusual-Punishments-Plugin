@@ -6,6 +6,9 @@ import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.PaginatedPane;
 import com.gorgonine.cruelAndUnusualPunishments.punishments.Punishment;
 import com.gorgonine.cruelAndUnusualPunishments.punishments.Punishments;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -18,16 +21,16 @@ import org.bukkit.inventory.meta.SkullMeta;
 import java.util.*;
 
 public class GuiManager {
+
+    private static final Map<UUID, Punishment> chosenPunishments = new HashMap<>();
     private static final ChestGui punishmentListGui = new ChestGui(3, "Punishments");
     private static final ChestGui playerListGui = new ChestGui(3, "Pick a Player");
 
     public static final  PaginatedPane punishmentPages = new PaginatedPane(0, 0, 9, 6);
-    public static final  PaginatedPane playerListPages = new PaginatedPane(0, 0, 9, Bukkit.getMaxPlayers()/9);
+    public static final  PaginatedPane playerListPages = new PaginatedPane(0, 0, 9, Math.min(6, (Bukkit.getMaxPlayers() + 8) / 9));
 
     private static final OutlinePane punishmentPane = new OutlinePane(0, 0, 9,3);
     private static final OutlinePane playerPane = new OutlinePane(0, 0, 9,3);
-
-    private static final Map<UUID, Punishment> chosenPunishments = new HashMap<>();
 
     public static void init(){
         punishmentListGui.setOnGlobalClick(event -> event.setCancelled(true));
@@ -43,6 +46,11 @@ public class GuiManager {
             ItemStack punishment = new ItemStack(p.getItemStack());
             ItemMeta punishmentItemMeta = punishment.getItemMeta();
             punishmentItemMeta.setDisplayName(p.getName());
+
+            ArrayList<Component> lore = new ArrayList<>();
+            lore.add(Component.text(p.getDesc()).decorate(TextDecoration.BOLD).color(TextColor.color(60, 104, 250)));
+
+            punishmentItemMeta.lore(lore);
             punishment.setItemMeta(punishmentItemMeta);
 
             punishmentPane.addItem(new GuiItem(punishment, event -> {
@@ -71,7 +79,7 @@ public class GuiManager {
                 Punishment chosen = chosenPunishments.get(event.getWhoClicked().getUniqueId());
                 if(chosen != null){
                     event.getWhoClicked().closeInventory();
-//                    Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "punish " + chosen.getName() + " " + player.getPlayer().getName());
+//                  Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "punish " + chosen.getName() + " " + player.getPlayer().getName());
 
                     chosen.execute((Player) event.getWhoClicked(),player);
                     event.getWhoClicked().sendMessage(ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Punished "+player.getName()+" with "+chosen.getName());

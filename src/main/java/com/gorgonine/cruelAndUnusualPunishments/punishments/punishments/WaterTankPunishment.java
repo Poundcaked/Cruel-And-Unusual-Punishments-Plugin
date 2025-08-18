@@ -1,6 +1,7 @@
 package com.gorgonine.cruelAndUnusualPunishments.punishments.punishments;
 
 import com.gorgonine.cruelAndUnusualPunishments.punishments.Punishment;
+import net.kyori.adventure.text.Component;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -10,9 +11,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.ArrayList;
+
 public class WaterTankPunishment extends Punishment {
     public WaterTankPunishment(){
-        super("WaterTank", ItemStack.of(Material.WATER_BUCKET));
+        super("WaterTank", ItemStack.of(Material.WATER_BUCKET),"Places an Obsidian Tank of water on your victim");
     }
 
     @Override

@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,27 +38,44 @@ public class GuiCommand implements CommandExecutor, TabExecutor {
             GuiManager.getPunishmentListGui().show((HumanEntity) sender);
             return true;
         }else if (args.length >= 2){
-            Punishment p = Punishments.getPunishmentFromName(args[0]);
+            if(Punishments.getPunishmentFromName(args[0]) != null){
+                Punishment p = Punishments.getPunishmentFromName(args[0]);
+                if(Bukkit.getPlayer(args[1]) != null){
+                    Player victim = Bukkit.getPlayer(args[1]);
+                    p.execute((Player) sender, victim);
 
-            Player victim = Bukkit.getPlayer(args[1]);
-            p.execute((Player) sender, victim);
-
-            return true;
+                    return true;
+                }else{
+                    sender.sendMessage("Improper usage of command, invalid player name! 🙄");
+                }
+            }else{
+                sender.sendMessage("Improper usage of command, invalid punishment name! 🙄");
+            }
         }else{
-            sender.sendMessage("Improper usage of command 😂");
+            sender.sendMessage("Improper usage of command, too little arguments! 😂");
             return false;
         }
 
+        return false;
     }
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] args) {
         if(args.length == 1){
-            return Punishments.getPunishmentNames();
+            ArrayList<String> punishmentNames = Punishments.getPunishmentNames();
+            ArrayList<String> filteredPunishmentNames = new ArrayList<String>();
+            for (int i = 0; i < punishmentNames.size(); i++) {
+                if(punishmentNames.get(i).toLowerCase().startsWith(args[0].toLowerCase())){
+                    filteredPunishmentNames.add(punishmentNames.get(i));
+                }
+            }
+            return filteredPunishmentNames;
         } else if (args.length == 2) {
             return null;
         }else{
             return Arrays.asList("");
         }
     }
+
+
 }
