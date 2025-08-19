@@ -55,14 +55,12 @@ public class PopQuizPunishment extends Punishment {
             return new JSONObject(readAll(rd));
         } catch (IOException | JSONException e) {
             e.printStackTrace();
-            return new JSONObject(); // empty object so it won't crash
+            return new JSONObject();
         }
     }
 
     @Override
     public void execute(Player executor, Player victim){
-
-        //api url: https://opentdb.com/api.php?amount=1&difficulty=medium
         JSONObject json = readJsonFromUrl("https://opentdb.com/api.php?amount=1&type=multiple");
 
         JSONArray results = json.getJSONArray("results");

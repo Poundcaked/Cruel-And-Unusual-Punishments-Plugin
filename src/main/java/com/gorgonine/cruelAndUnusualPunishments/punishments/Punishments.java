@@ -25,6 +25,7 @@ public class Punishments {
         addPunishment(new BunnyHopPunishment());
         addPunishment(new MilesMoralesPunishment());
         addPunishment(new ChunkDeletionPunishment());
+        addPunishment(new LightningCirclePunishment());
     }
 
     public static ArrayList<Punishment> getPunishments(){
