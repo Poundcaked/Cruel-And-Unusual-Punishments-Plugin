@@ -28,7 +28,7 @@ public class ChunkDeletionPunishment extends Punishment {
                             chunk.getBlock(finalX, y, finalZ).setType(Material.AIR);
                         }
                     }
-                    if(atLeastOneBlockBroke){chunk.getWorld().playSound(victim, Sound.BLOCK_STONE_BREAK,0.1F,1.0F);}
+                    if(atLeastOneBlockBroke){chunk.getWorld().playSound(victim.getLocation(), Sound.BLOCK_STONE_BREAK,0.1F,1.0F);}
                 }, x);
             }
         }

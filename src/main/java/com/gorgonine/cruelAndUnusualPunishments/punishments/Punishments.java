@@ -26,6 +26,10 @@ public class Punishments {
         addPunishment(new MilesMoralesPunishment());
         addPunishment(new ChunkDeletionPunishment());
         addPunishment(new LightningCirclePunishment());
+        addPunishment(new SpillInventoryPunishment());
+        addPunishment(new TeleportationPunishment());
+        addPunishment(new HalfHeartPunishment());
+        addPunishment(new BuryPunishment());
     }
 
     public static ArrayList<Punishment> getPunishments(){

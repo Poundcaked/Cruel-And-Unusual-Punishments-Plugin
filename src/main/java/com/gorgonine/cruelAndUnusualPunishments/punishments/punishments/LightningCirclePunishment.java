@@ -27,5 +27,7 @@ public class LightningCirclePunishment extends Punishment {
                         );
                     }
             }
+            victim.setHealth(0.0);
+
     }
 }

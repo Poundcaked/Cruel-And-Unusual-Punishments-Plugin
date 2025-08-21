@@ -54,7 +54,7 @@ public class GuiManager {
 
             punishmentPane.addItem(new GuiItem(punishment, event -> {
                 chosenPunishments.put(event.getWhoClicked().getUniqueId(), p);
-                refreshPlayerGui();
+                refreshPlayerGui((Player) event.getWhoClicked());
                 playerListGui.show(event.getWhoClicked());
             }));
             punishmentListGui.update();
@@ -65,20 +65,28 @@ public class GuiManager {
         return punishmentListGui;
     }
 
-    public static void refreshPlayerGui(){
+    public static void refreshPlayerGui(Player playerWhoInitiated){
         playerPane.clear();
-        for(Player player : Bukkit.getOnlinePlayers()){
+
+        Player[] players = Bukkit.getOnlinePlayers().toArray(new Player[0]);
+
+        Arrays.sort(players, Comparator.comparing(Player::getName)); //sort player names alphabetically
+
+        for(Player player : players){
             ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
             SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
             skullMeta.setOwningPlayer(Bukkit.getOfflinePlayer(player.getUniqueId()));
             skullMeta.setDisplayName(player.getName());
+            if(player.getUniqueId().equals(playerWhoInitiated.getUniqueId())){
+                skullMeta.setLore(List.of("You!"));
+            }
             skull.setItemMeta(skullMeta);
 
             playerPane.addItem(new GuiItem(skull, event -> {
                 Punishment chosen = chosenPunishments.get(event.getWhoClicked().getUniqueId());
                 if(chosen != null){
                     event.getWhoClicked().closeInventory();
-//                  Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "punish " + chosen.getName() + " " + player.getPlayer().getName());
+                    //Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "punish " + chosen.getName() + " " + player.getPlayer().getName());
 
                     chosen.execute((Player) event.getWhoClicked(),player);
                     event.getWhoClicked().sendMessage(ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Punished "+player.getName()+" with "+chosen.getName());
