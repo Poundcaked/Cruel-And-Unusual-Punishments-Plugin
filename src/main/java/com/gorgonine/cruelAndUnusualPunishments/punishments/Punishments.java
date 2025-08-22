@@ -30,6 +30,9 @@ public class Punishments {
         addPunishment(new TeleportationPunishment());
         addPunishment(new HalfHeartPunishment());
         addPunishment(new BuryPunishment());
+        addPunishment(new HeatWavePunishment());
+        addPunishment(new ConstantNoisePunishment());
+        addPunishment(new AnvilPunishment());
     }
 
     public static ArrayList<Punishment> getPunishments(){

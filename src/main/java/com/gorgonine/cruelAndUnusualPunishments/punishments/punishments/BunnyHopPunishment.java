@@ -17,7 +17,9 @@ public class BunnyHopPunishment extends Punishment {
     @Override
     public void execute(Player executor, Player victim) {
         for (int i = 0; i < 300; i++) {
-            Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin(PLUGIN_ID), () -> victim.setVelocity(new Vector(0.0F, 0.42F, 0.0F)), 13*i);
+            if(victim.isOnGround()){
+                Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin(PLUGIN_ID), () -> victim.setVelocity(new Vector(victim.getVelocity().getX(), 0.42F, victim.getVelocity().getZ())), 13*i);
+            }
         }
     }
 }
