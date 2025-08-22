@@ -50,6 +50,8 @@ public class HeatWavePunishment extends Punishment {
                         }
                     }
                 }
+            }else{
+                task.cancel();
             }
 
         }, 1L, 1L);

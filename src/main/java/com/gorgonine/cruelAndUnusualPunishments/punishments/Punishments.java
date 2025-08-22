@@ -33,6 +33,7 @@ public class Punishments {
         addPunishment(new HeatWavePunishment());
         addPunishment(new ConstantNoisePunishment());
         addPunishment(new AnvilPunishment());
+        addPunishment(new CoarseDirtLaserEyesPunishment());
     }
 
     public static ArrayList<Punishment> getPunishments(){
