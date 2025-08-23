@@ -34,6 +34,14 @@ public class Punishments {
         addPunishment(new ConstantNoisePunishment());
         addPunishment(new AnvilPunishment());
         addPunishment(new CoarseDirtLaserEyesPunishment());
+        addPunishment(new CarbonitePunishment());
+        addPunishment(new MeatGrinderPunishment());
+        addPunishment(new HeavenPunishment());
+        addPunishment(new OrbitalLaserPunishment());
+        addPunishment(new ConstantArrowPunishment());
+        addPunishment(new CaptchaPunishment());
+        addPunishment(new KrakenPunishment());
+        addPunishment(new KitOfShamePunishment());
     }
 
     public static ArrayList<Punishment> getPunishments(){

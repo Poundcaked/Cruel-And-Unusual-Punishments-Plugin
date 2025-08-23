@@ -20,6 +20,7 @@ public class RotateRandomlyPunishment extends Punishment {
         Random random = new Random();
         for (int i = 0; i < random.nextInt(49,100); i++) {
             Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin(PLUGIN_ID), () -> victim.setRotation(random.nextFloat(0.0F,360.0F) ,random.nextFloat(-90.0F,90.0F)), i);
+            Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin(PLUGIN_ID), () -> victim.sendHurtAnimation(random.nextInt(0,360)), i);
         }
     }
 }

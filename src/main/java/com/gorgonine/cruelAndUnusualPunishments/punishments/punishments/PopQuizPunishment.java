@@ -90,7 +90,7 @@ public class PopQuizPunishment extends Punishment {
 
         boolean[] answerPromptedCloseRequest = {false};
 
-        gui.setOnGlobalClick(event -> event.setCancelled(true)); // cancel all clicks
+        gui.setOnGlobalClick(event -> event.setCancelled(true));
         gui.setOnClose(event -> {
             if(!answerPromptedCloseRequest[0]){
                 Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin(PLUGIN_ID), () -> gui.show(victim), 1);

@@ -24,6 +24,7 @@ public class FlingPunishment extends Punishment {
         float randomYVel = random.nextFloat(15.0F, 60.0F);
         float randomZVel = random.nextFloat(-40.0F, 40.0F);
 
+        victim.sendHurtAnimation(0);
         victim.setVelocity(new Vector(randomXVel,randomYVel,randomZVel));
         Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin(PLUGIN_ID), () -> victim.setVelocity(new Vector(-randomXVel,-randomYVel,-randomZVel)), 1*20);
     }

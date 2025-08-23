@@ -23,7 +23,7 @@ public class BuryPunishment extends Punishment {
         world.setType(mainBlock.getX(), mainBlock.getY()-11, mainBlock.getZ(), Material.AIR);
         world.setType(mainBlock.getX(), mainBlock.getY()-12, mainBlock.getZ(), Material.REDSTONE_TORCH);
 
-        victim.teleport(new Location(world,mainBlock.getX(),mainBlock.getY()-12,mainBlock.getZ()));
+        victim.teleport(new Location(world,mainBlock.getX()+0.5,mainBlock.getY()-12,mainBlock.getZ()+0.5));
         victim.playSound(victim, Sound.BLOCK_GRASS_BREAK,2.0F,1.0F);
     }
 }
